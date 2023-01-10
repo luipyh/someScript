@@ -16,9 +16,9 @@ from email.header import Header
 
 def main_handler(event, context):
 
-    param1 = {"user":"luipyh@qq.com","password":"ll318119"}
-    param2 = {"user":"luipyh1@qq.com","password":"ll318119"}
-    param3 = {"user":"luipyh2@qq.com","password":"ll318119"}
+    param1 = {"user":"@qq.com","password":""}
+    param2 = {"user":"@qq.com","password":""}
+    param3 = {"user":"@qq.com","password":""}
     
     if time.strftime('%H') == '05':
         param1["step"] = str(random.randint(60000, 61000))
@@ -42,7 +42,7 @@ def main_handler(event, context):
 def updateStep(param):
 
     rs = ''
-    url = 'https://apis.jxcxin.cn/api/mi'
+    url = ''
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36','Content-Type': 'application/json'}
     try:
         r = requests.post(url, timeout=10, headers=headers, data=param)
@@ -58,10 +58,10 @@ def updateStep(param):
 def sendLog(context):
 
     # 发信方的信息：发信邮箱，QQ 邮箱授权码
-    from_addr = 'ibelongofu@qq.com'
-    password = 'oglboqyixhwfbhdb'
+    from_addr = '@qq.com'
+    password = ''
     # 收信方邮箱
-    to_addr = 'luipyh@qq.com'
+    to_addr = '@qq.com'
     # 发信服务器
     smtp_server = 'smtp.qq.com'
 
@@ -69,7 +69,7 @@ def sendLog(context):
     msg = MIMEText(context, 'plain', 'utf-8')
     # 邮件头信息
     msg['From'] = Header('Zepp Life')  # 发送者
-    msg['To'] = Header('鲁杨')  # 接收者
+    msg['To'] = Header('')  # 接收者
     subject = '步数修改日志'+time.strftime("%Y-%m-%d %H:%M")
     msg['Subject'] = Header(subject, 'utf-8')  # 邮件主题
     try:
